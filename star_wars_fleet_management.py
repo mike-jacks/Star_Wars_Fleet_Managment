@@ -28,7 +28,7 @@ class FleetManager:
         print(f"Total attack power: {self.calculate_total_attack_power()}")
 
     def list_fleet(self):
-        print(f"{self.name} fleet:")
+        print(f"{self.fleet_name} fleet:")
         for ship_type, ships in self.fleet.items():
             print(f"{ship_type.value} ships:")
             for ship in ships:
