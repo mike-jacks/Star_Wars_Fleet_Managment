@@ -1,0 +1,4 @@
+.DS_Store
+*/.DS_Store
+.star_wars_fleet_management_env
+.mypy_cache
