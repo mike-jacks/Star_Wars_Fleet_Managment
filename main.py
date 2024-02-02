@@ -29,7 +29,7 @@ def main():
     imperial_super_star_destroyer_executor = ImperialSuperStarDestroyer(name="Executor", ship_type=ShipType.CAPITAL, weapon_power=200, shield_power=2000)
     death_star = DeathStar(name="Death Star", ship_type=ShipType.UNIQUE, weapon_power=500, shield_power=10000)
 
-    # Add ships to fleet
+    # Add ships to rebel fleet
     rebel_fleet_manager.add_ship(x_wing)
     rebel_fleet_manager.add_ship(y_wing)
     rebel_fleet_manager.add_ship(a_wing)
@@ -39,6 +39,7 @@ def main():
     rebel_fleet_manager.add_ship(u_wing)
     rebel_fleet_manager.add_ship(star_cruiser)
 
+    # Add ships to imperial fleet
     imperial_fleet_manager.add_ship(tie_fighter)
     imperial_fleet_manager.add_ship(tie_interceptor)
     imperial_fleet_manager.add_ship(tie_bomber)
@@ -66,6 +67,8 @@ def main():
     rebel_fleet_manager.remove_ships_out_of_commission()
     imperial_fleet_manager.remove_ships_out_of_commission()
     print()
+    
+    # Set two ships from each fleet to attack each other
     current_rebel_ship = rebel_fleet_manager.get_ship("X-Wing")
     current_imperial_ship = imperial_fleet_manager.get_ship("TIE Fighter")
     while current_rebel_ship.shield_power > 0 and current_imperial_ship.shield_power > 0:
@@ -78,6 +81,7 @@ def main():
     print()
     imperial_fleet_manager.list_fleet()
     
+    # Add new ship, Slave One, to the game. Don't add it to a fleet, but check it's alliance.
     slave_one = Firespray31(name="Slave One", ship_type=ShipType.UNIQUE, weapon_power=40, shield_power=250)
     print(rebel_fleet_manager.is_an_ally(ship=slave_one))
     print(imperial_fleet_manager.is_an_ally(ship=slave_one))
