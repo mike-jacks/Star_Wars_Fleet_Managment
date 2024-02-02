@@ -25,3 +25,19 @@ class FleetManager:
 
     def print_total_attack_power(self):
         print(f"Total attack power: {self.calculate_total_attack_power()}")
+
+    def list_fleet(self):
+        for ship_type, ships in self.fleet.items():
+            print(f"{ship_type.value} ships:")
+            for ship in ships:
+                print(f"  - {ship.name}")
+    
+    def calculate_total_shield_power(self):
+        total_defense_power = 0
+        for ships in self.fleet.values():
+            for ship in ships:
+                total_defense_power += ship.defense_power()
+        return total_defense_power
+    
+    def print_total_shield_power(self):
+        print(f"Total shield power: {self.calculate_total_shield_power()}")
