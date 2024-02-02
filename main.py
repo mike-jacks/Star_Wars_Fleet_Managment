@@ -5,8 +5,8 @@ from imperial_ships import TIEFighter, TIEInterceptor, TIEBomber, TIEAdvanced, T
 
 def main():
     # Create fleet managers
-    rebel_fleet_manager = FleetManager()
-    imperial_fleet_manager = FleetManager()
+    rebel_fleet_manager = FleetManager(fleet_name="Rebel")
+    imperial_fleet_manager = FleetManager(fleet_name="Imperial")
 
     # Create rebel ships
     x_wing = XWing(name="X-Wing", ship_type=ShipType.FIGHTER, weapon_power=10, shield_power=100)
@@ -63,6 +63,22 @@ def main():
     imperial_fleet_manager.print_total_attack_power()
     imperial_fleet_manager.list_fleet()
     print()
+    print()
+    rebel_fleet_manager.remove_ships_out_of_commission()
+    imperial_fleet_manager.remove_ships_out_of_commission()
+    print()
+    current_rebel_ship = rebel_fleet_manager.get_ship("X-Wing")
+    current_imperial_ship = imperial_fleet_manager.get_ship("TIE Fighter")
+    while current_rebel_ship.shield_power > 0 and current_imperial_ship.shield_power > 0:
+        current_rebel_ship.attack(current_imperial_ship)
+        current_imperial_ship.attack(current_rebel_ship)
+    rebel_fleet_manager.remove_ships_out_of_commission()
+    imperial_fleet_manager.remove_ships_out_of_commission()
+    print()
+    rebel_fleet_manager.list_fleet()
+    print()
+    imperial_fleet_manager.list_fleet()
+    
 
 if __name__ == "__main__":
     main()

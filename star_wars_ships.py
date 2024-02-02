@@ -22,4 +22,13 @@ class StarWarsShip(ABC):
         pass
     
     def attack(self, target: 'StarWarsShip'):
-        target.shield_power -= self.attack_power()
+        if self.shield_power > 0:
+            print(f"{self.name} is attacking {target.name}")
+            print(f"{self.name} attack power: {self.attack_power()}")
+            print(f"{target.name} shield power: {target.shield_power}")
+            print(f"{target.name} shield power after attack: {target.shield_power - self.attack_power()}")
+            target.shield_power -= self.attack_power()
+            if target.shield_power < 0:
+                target.shield_power = 0
+        else:
+            print(f"{self.name} is out of commission and cannot attack")
