@@ -1,12 +1,11 @@
 from star_wars_ships import ShipType
 from star_wars_fleet_management import FleetManager
-from rebel_ships import XWing, YWing, AWing, BWing, CR90Corvette, MonCalamariStarCruiser, YT1300LightFreighter, UWing
-from imperial_ships import TIEFighter, TIEInterceptor, TIEBomber, TIEAdvanced, TIEDefender, LambdaClassShuttle, ImperialIClassStarDestroyer, ImperialIIClassStarDestroyer, ImperialSuperStarDestroyer, DeathStar
-
+from rebel_ships import RebelShip, XWing, YWing, AWing, BWing, CR90Corvette, MonCalamariStarCruiser, YT1300LightFreighter, UWing
+from imperial_ships import ImperialShip, TIEFighter, TIEInterceptor, TIEBomber, TIEAdvanced, TIEDefender, LambdaClassShuttle, ImperialIClassStarDestroyer, ImperialIIClassStarDestroyer, ImperialSuperStarDestroyer, DeathStar, Firespray31
 def main():
     # Create fleet managers
-    rebel_fleet_manager = FleetManager(fleet_name="Rebel")
-    imperial_fleet_manager = FleetManager(fleet_name="Imperial")
+    rebel_fleet_manager = FleetManager(fleet_name="Rebel", ship_alliance=RebelShip)
+    imperial_fleet_manager = FleetManager(fleet_name="Imperial", ship_alliance=ImperialShip)
 
     # Create rebel ships
     x_wing = XWing(name="X-Wing", ship_type=ShipType.FIGHTER, weapon_power=10, shield_power=100)
@@ -78,6 +77,10 @@ def main():
     rebel_fleet_manager.list_fleet()
     print()
     imperial_fleet_manager.list_fleet()
+    
+    slave_one = Firespray31(name="Slave One", ship_type=ShipType.UNIQUE, weapon_power=40, shield_power=250)
+    print(rebel_fleet_manager.is_an_ally(ship=slave_one))
+    print(imperial_fleet_manager.is_an_ally(ship=slave_one))
     
 
 if __name__ == "__main__":

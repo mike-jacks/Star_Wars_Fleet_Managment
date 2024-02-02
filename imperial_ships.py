@@ -75,3 +75,9 @@ class DeathStar(ImperialShip):
     def attack_power(self):
         return self.weapon_power * 1000
 
+class Firespray31(ImperialShip):
+    def __init__(self, name: str, ship_type: ShipType, weapon_power: int, shield_power:int) -> None:
+        super().__init__(name, ship_type, weapon_power, shield_power)
+
+    def attack_power(self):
+        return self.weapon_power * 10

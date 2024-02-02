@@ -1,5 +1,6 @@
 from star_wars_ships import StarWarsShip, ShipType
 
+# Rebel ships definitions.
 class RebelShip(StarWarsShip):
     def __init__(self, name: str, ship_type: ShipType, weapon_power: int, shield_power: int) -> None:
         super().__init__(name, ship_type, weapon_power, shield_power)

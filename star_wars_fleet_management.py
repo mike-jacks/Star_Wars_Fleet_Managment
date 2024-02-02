@@ -1,9 +1,12 @@
 from star_wars_ships import StarWarsShip, ShipType
+from rebel_ships import RebelShip
+from imperial_ships import ImperialShip
 
 class FleetManager:
-    def __init__(self, fleet_name) -> None:
+    def __init__(self, fleet_name: str, ship_alliance: type) -> None:
         self.fleet_name = fleet_name
-        self.fleet: dict[ShipType,list[StarWarsShip]] = dict()    
+        self.ship_alliance = ship_alliance
+        self.fleet: dict[ShipType,list[self.ship_alliance]] = dict()    
     
     def add_ship(self, ship: StarWarsShip):
         if ship.ship_type in self.fleet:
@@ -63,3 +66,6 @@ class FleetManager:
             attacker.attack(target)
         else:
             print(f"{attacker.name} is out of commission and cannot attack")
+    
+    def is_an_ally(self, ship: StarWarsShip) -> bool:
+        return isinstance(ship, self.ship_alliance)
